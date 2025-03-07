@@ -223,9 +223,9 @@ class Renderer:
         """Draw the controls information."""
         controls = [
             "Controls:",
-            "← → : Move",
-            "↑ : Rotate",
-            "↓ : Soft Drop",
+            "Left/Right : Move",
+            "Up : Rotate",
+            "Down : Soft Drop",
             "Space : Hard Drop",
             "P : Pause",
             "R : Restart",
