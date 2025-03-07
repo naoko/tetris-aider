@@ -30,7 +30,7 @@ class Renderer:
         # Calculate board position to center it
         self.board_width = GRID_WIDTH * BLOCK_SIZE
         self.board_height = GRID_HEIGHT * BLOCK_SIZE
-        self.board_x = (screen_width - self.board_width) // 2 - 100  # Shift left to make room for UI
+        self.board_x = (screen_width - self.board_width) // 2  # Center the board
         self.board_y = (screen_height - self.board_height) // 2
         
         # Next piece preview box
@@ -232,12 +232,15 @@ class Renderer:
             "Esc : Quit"
         ]
         
+        # Position controls on the left with proper margin
+        x_pos = 20  # Fixed margin from left edge
         y_pos = self.board_y
+        
         for text in controls:
             control_text = self.small_font.render(text, True, WHITE)
             self.screen.blit(
                 control_text,
-                (self.board_x - 200, y_pos)
+                (x_pos, y_pos)
             )
             y_pos += 30
 
