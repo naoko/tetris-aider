@@ -34,6 +34,10 @@ test: venv
 run: venv
 	$(PYTHON_VENV) -m tetris
 
+# Record a demo of the Tetris game
+record-demo: venv
+	$(PYTHON_VENV) -m tetris --record-demo
+
 # Lint the code
 lint: venv
 	$(PYTHON_VENV) -m flake8 src tests
@@ -57,11 +61,12 @@ clean:
 # Show help
 help:
 	@echo "Available targets:"
-	@echo "  make setup    - Create virtualenv and install dependencies"
-	@echo "  make dev      - Install development dependencies"
-	@echo "  make install  - Install package"
-	@echo "  make test     - Run tests"
-	@echo "  make run      - Run the Tetris game"
-	@echo "  make lint     - Run linters (flake8, mypy)"
-	@echo "  make format   - Format code with black"
-	@echo "  make clean    - Remove virtualenv and build artifacts"
+	@echo "  make setup       - Create virtualenv and install dependencies"
+	@echo "  make dev         - Install development dependencies"
+	@echo "  make install     - Install package"
+	@echo "  make test        - Run tests"
+	@echo "  make run         - Run the Tetris game"
+	@echo "  make record-demo - Record a demo of the Tetris game"
+	@echo "  make lint        - Run linters (flake8, mypy)"
+	@echo "  make format      - Format code with black"
+	@echo "  make clean       - Remove virtualenv and build artifacts"
