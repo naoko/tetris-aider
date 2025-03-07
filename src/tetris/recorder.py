@@ -92,6 +92,8 @@ def create_demo_recording(game_instance, duration=20):
         game_instance: Instance of TetrisGame
         duration: Duration of recording in seconds
     """
+    # Initialize the game
+    game_instance.reset_game()
     recorder = GameRecorder()
     recorder.start_recording()
     
@@ -110,8 +112,10 @@ def create_demo_recording(game_instance, duration=20):
     start_time = time.time()
     
     # Run the game with recording
-    while time.time() - start_time < duration and game_instance.running:
-        game_instance._handle_events()
+    running = True
+    while time.time() - start_time < duration and running:
+        # Handle events and check if we should exit
+        running = game_instance._handle_events()
         game_instance._update_game()
         game_instance._render()
         
