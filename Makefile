@@ -1,4 +1,4 @@
-.PHONY: setup venv clean install dev test
+.PHONY: setup venv clean install dev test run lint format
 
 # Variables
 VENV_NAME := venv
@@ -30,6 +30,19 @@ install: venv
 test: venv
 	$(PYTHON_VENV) -m pytest
 
+# Run the Tetris game
+run: venv
+	$(PYTHON_VENV) -m tetris
+
+# Lint the code
+lint: venv
+	$(PYTHON_VENV) -m flake8 src tests
+	$(PYTHON_VENV) -m mypy src tests
+
+# Format the code
+format: venv
+	$(PYTHON_VENV) -m black src tests
+
 # Clean up generated files
 clean:
 	rm -rf $(VENV_NAME)
@@ -48,4 +61,7 @@ help:
 	@echo "  make dev      - Install development dependencies"
 	@echo "  make install  - Install package"
 	@echo "  make test     - Run tests"
+	@echo "  make run      - Run the Tetris game"
+	@echo "  make lint     - Run linters (flake8, mypy)"
+	@echo "  make format   - Format code with black"
 	@echo "  make clean    - Remove virtualenv and build artifacts"
